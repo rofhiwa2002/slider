@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Hobbies Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for content transition - Now using Tailwind classes for opacity/display */
+        .page-section {
+            transition-property: opacity;
+            transition-duration: 300ms;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-6">
+
+    <div class="w-full max-w-5xl">
+        
+        <!-- Main Application Card Container -->
+        <div class="bg-white shadow-2xl rounded-xl p-6 md:p-10">
+
+            <!-- Back Button (Hidden on the main page) -->
+            <button id="back-button" class="hidden text-blue-600 hover:text-blue-800 transition duration-150 mb-6 font-medium flex items-center" onclick="navigate('home')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-1"><path d="m15 18-6-6 6-6"/></svg>
+                Back to Hobbies
+            </button>
+
+
+            <!-- 1. HOBBY SHOWCASE (HOME PAGE) -->
+            <div id="home-page" class="page-section opacity-100">
+                <h1 class="text-4xl font-extrabold text-gray-800 mb-8 text-center">My Creative Pursuits</h1>
+                <p class="text-lg text-gray-600 mb-10 text-center max-w-3xl mx-auto">
+                    Click on any hobby card below to explore the latest projects, routes, and creations.
+                </p>
+
+                <!-- Hobby Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                    <!-- Card 1: Cycling -->
+                    <a href="#routes" onclick="navigate('routes')" class="flex flex-col items-center text-center p-6 border border-gray-100 rounded-xl transition duration-300 hover:shadow-lg hover:border-blue-400 transform hover:-translate-y-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 mb-4"><circle cx="12" cy="19" r="2"/><path d="M10 17v-5l2-4 2 4v5"/><path d="M15 19H9"/><path d="M17.5 17h-.8L15 12l-2-4-2 4-1.7.5L8.5 17h-.8"/><circle cx="5.5" cy="19" r="2"/></svg>
+                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">Cycling Routes</h2>
+                        <p class="text-gray-500 text-sm">
+                            Long-distance rides and favorite local trails.
+                        </p>
+                    </a>
+
+                    <!-- Card 2: Blender 3D -->
+                    <a href="#renders" onclick="navigate('renders')" class="flex flex-col items-center text-center p-6 border border-gray-100 rounded-xl transition duration-300 hover:shadow-lg hover:border-orange-400 transform hover:-translate-y-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-500 mb-4"><path d="m20.84 6.62-1.42-1.41a2 2 0 0 0-2.83 0L13.5 8.5"/><path d="m12.42 16.58-1.4-1.4c-.62-.62-.6-1.6.03-2.26l.46-.46c.66-.66 1.74-.64 2.37-.02l1.4 1.4"/><path d="M9.5 17.5 4.93 19.07l1.57-4.57.5-.5a2 2 0 0 1 2.83 0l1.41 1.42"/><path d="M18.5 14.5a2 2 0 0 0 0-2.83L14.7 8.93c-.63-.63-1.68-.63-2.3 0L8.7 12.67a2 2 0 0 0 0 2.83L12.4 18.5c.63.63 1.68.63 1.68 0L18.5 14.5Z"/></svg>
+                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">3D Renders</h2>
+                        <p class="text-gray-500 text-sm">
+                            Abstract scenes and architectural visualizations.
+                        </p>
+                    </a>
+
+                    <!-- Card 3: Making Movies -->
+                    <a href="#trailers" onclick="navigate('trailers')" class="flex flex-col items-center text-center p-6 border border-gray-100 rounded-xl transition duration-300 hover:shadow-lg hover:border-red-400 transform hover:-translate-y-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-600 mb-4"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><path d="M17 2v4"/><path d="M7 2v4"/><path d="M22 10H2"/><path d="m10 16 4-2-4-2v4z"/></svg>
+                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">Film & Trailers</h2>
+                        <p class="text-gray-500 text-sm">
+                            Narrative shorts, documentaries, and behind-the-scenes.
+                        </p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2. CYCLING ROUTES PAGE -->
+            <div id="routes-page" class="page-section hidden opacity-0">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Favorite Cycling Routes</h2>
+                <div class="space-y-6">
+                    <!-- Route 1: Cape Town Atlantic Seaboard Blast (32km) -->
+                    <div class="border rounded-lg p-4 bg-blue-50/50">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-2">The Atlantic Seaboard Blast (32 km)</h3>
+                        <img src="https://placehold.co/800x450/067098/ffffff?text=Cape+Town+Cycling+Route" alt="Map of the Atlantic Seaboard Cycling Route in Cape Town" class="w-full h-auto object-cover rounded-lg mb-3">
+                        <p class="text-gray-600">
+                            A stunning coastal route along the Atlantic Seaboard of **Cape Town**. This $32 \text{ km}$ loop starts at the **Sea Point Promenade**, passes through **Clifton** and **Camps Bay**, offering breathtaking views of the Twelve Apostles and Lion's Head. It's relatively flat for the first half, with a few manageable climbs near Camps Bay. Perfect for a morning ride before the traffic hits!
+                        </p>
+                        <ul class="list-disc list-inside text-sm text-gray-500 mt-3 ml-4">
+                            <li>**Distance:** $32 \text{ km}$ (approximate)</li>
+                            <li>**Elevation Gain:** $\approx 350 \text{ m}$</li>
+                            <li>**Highlight:** Panoramic views of the Atlantic Ocean and Table Mountain.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-400 mt-6 text-center">
+                    **The Renders and Trailers pages still contain placeholders for you to update with your content.**
+                </p>
+            </div>
+
+            <!-- 3. BLENDER RENDERS PAGE -->
+            <div id="renders-page" class="page-section hidden opacity-0">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Latest Blender 3D Renders</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Render 1 (Placeholder) -->
+                    <div class="relative group rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <!-- REPLACE IMAGE SOURCE BELOW -->
+                        <img src="https://placehold.co/600x600/f59e0b/ffffff?text=Abstract+Render+1" alt="Abstract 3D Art Placeholder" class="w-full h-auto object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="text-white font-semibold text-lg">Abstract Sphere (Replace Title)</span>
+                        </div>
+                    </div>
+                    <!-- Render 2 (Placeholder) -->
+                    <div class="relative group rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <!-- REPLACE IMAGE SOURCE BELOW -->
+                        <img src="https://placehold.co/600x600/ef4444/ffffff?text=Architectural+Scene" alt="Architectural 3D Scene Placeholder" class="w-full h-auto object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="text-white font-semibold text-lg">Loft Apartment (Replace Title)</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-400 mt-6 text-center">**Please update these image sources and descriptions with your actual 3D renders.**</p>
+            </div>
+
+            <!-- 4. MOVIE TRAILERS PAGE -->
+            <div id="trailers-page" class="page-section hidden opacity-0">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Filmmaking Projects & Trailers</h2>
+                <div class="space-y-6">
+                    <!-- Project 1 (Video) -->
+                    <div class="border rounded-lg p-4 bg-red-50/50">
+                        <h3 class="text-xl font-semibold text-red-700 mb-2">The Last Light (Short Film)</h3>
+                        <!-- Embedded Video Player (NOTE: The local path you provided must be hosted online or located in the same directory as this HTML file to work.) -->
+                        <video controls class="w-full h-auto object-cover rounded-lg mb-3" poster="https://placehold.co/800x450/ef4444/ffffff?text=Video+Loading">
+                            <!-- Using a generic placeholder video source for immediate functionality in the browser -->
+                            <source src="https://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="text-gray-600">A dramatic short focusing on a survivor's final moments. Used a vintage lens kit for a unique look.</p>
+                        <a href="#" class="inline-block mt-3 text-red-600 hover:text-red-800 font-medium transition">Watch Trailer (Placeholder Link)</a>
+                    </div>
+                    <!-- Project 2 (Placeholder) -->
+                    <div class="border rounded-lg p-4 bg-red-50/50">
+                        <h3 class="text-xl font-semibold text-red-700 mb-2">Behind the Scenes: My Documentary</h3>
+                        <!-- REPLACE IMAGE SOURCE BELOW -->
+                        <img src="https://placehold.co/800x450/8b5cf6/ffffff?text=BTS+Thumbnail+2" alt="Behind the Scenes Thumbnail Placeholder" class="w-full h-auto object-cover rounded-lg mb-3">
+                        <p class="text-gray-600">Footage documenting the process of creating a local historical piece, covering logistics and interviewing techniques.</p>
+                        <a href="#" class="inline-block mt-3 text-red-600 hover:text-red-800 font-medium transition">View Production Stills (Placeholder Link)</a>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-400 mt-6 text-center">**Please update these image sources, descriptions, and links with your actual project details.**</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons (for icons in the card)
+        lucide.createIcons();
+
+        const sections = {
+            'home': document.getElementById('home-page'),
+            'routes': document.getElementById('routes-page'),
+            'renders': document.getElementById('renders-page'),
+            'trailers': document.getElementById('trailers-page')
+        };
+        const backButton = document.getElementById('back-button');
+
+        /**
+         * Simulates routing by showing the selected page and hiding the others.
+         * Updates the URL hash for deep linking.
+         * @param {string} pageId - The ID of the page to navigate to ('home', 'routes', 'renders', 'trailers').
+         */
+        function navigate(pageId) {
+            // Update URL hash without causing a full page reload
+            window.location.hash = pageId === 'home' ? '' : pageId;
+            
+            // Show/Hide back button
+            if (pageId === 'home') {
+                backButton.classList.add('hidden');
+            } else {
+                backButton.classList.remove('hidden');
+            }
+
+            // Loop through all sections and update their active state
+            for (const id in sections) {
+                const section = sections[id];
+                if (section) {
+                    if (id === pageId) {
+                        // Show page: remove hidden, set opacity to 100
+                        section.classList.remove('hidden');
+                        // Small delay to ensure 'hidden' removal registers before transition starts
+                        setTimeout(() => { 
+                            section.classList.remove('opacity-0');
+                            section.classList.add('opacity-100');
+                        }, 10); 
+                    } else {
+                        // Hide page: set opacity to 0, then hide after transition
+                        section.classList.remove('opacity-100');
+                        section.classList.add('opacity-0');
+
+                        // Wait for the 300ms transition to finish before applying display: none
+                        setTimeout(() => {
+                            // Only hide if it's still the non-active page
+                            if (window.location.hash.substring(1) !== id && pageId !== id) {
+                                section.classList.add('hidden');
+                            }
+                        }, 300); 
+                    }
+                }
+            }
+        }
+
+        /**
+         * Reads the URL hash on load and navigates to the corresponding page.
+         */
+        function handleHashChange() {
+            const hash = window.location.hash.substring(1); // Get hash without '#'
+
+            if (hash && sections[hash]) {
+                navigate(hash);
+            } else {
+                navigate('home'); // Default to home page
+            }
+        }
+
+        // --- Event Listeners and Initialization ---
+        
+        // Listen for hash changes (e.g., when using the browser back/forward buttons)
+        window.addEventListener('hashchange', handleHashChange);
+
+        // Initial load check
+        handleHashChange();
+
+    </script>
+</body>
+</html>
